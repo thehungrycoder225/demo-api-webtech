@@ -14,8 +14,13 @@ const PORT = process.env.PORT || 3000;
 const BASE_URI = process.env.BASE_URI || '/api/v1';
 
 // Import Routes (We will create this later)
-const apiRoutes = require('./src/routes/dishRoutes');
-app.use(BASE_URI, apiRoutes);
+const dishRoutes = require('./src/routes/dishRoutes');
+const roomRoutes = require('./src/routes/roomRoutes');
+const transactionRoutes = require('./src/routes/transactionRoutes');
+
+app.use(BASE_URI, dishRoutes);
+app.use(BASE_URI, roomRoutes);
+app.use(BASE_URI, transactionRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
