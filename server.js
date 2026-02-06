@@ -15,6 +15,10 @@ const BASE_URI = process.env.BASE_URI || '/api/v1';
 
 // Import Routes (We will create this later)
 const apiRoutes = require('./src/routes/dishRoutes');
+const chefRoutes = require('./src/routes/chefRoutes');
+
+// Use Routes
+app.use(BASE_URI, chefRoutes);
 app.use(BASE_URI, apiRoutes);
 
 app.listen(PORT, () => {
