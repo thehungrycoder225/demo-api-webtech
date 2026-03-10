@@ -9,7 +9,7 @@ const dishSchema = new mongoose.Schema({
     type: Number, // It must be a number (10.99)
     required: true,
     min: [0, 'Price cannot be negative'], // Price cannot be negative
-    max: [1000, 'Price seems too high!'], // Custom error message if price > 1000
+    max: [1000, 'Price cannot exceed 1000'], // Custom error message if price > 1000
   },
   category: {
     type: String,

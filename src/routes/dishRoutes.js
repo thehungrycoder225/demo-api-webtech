@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+// Import controllers here...
+const { protect, authorize } = require('../middleware/authMiddleware');
+
 // Import the Controller
 const {
   getAllDishes,
@@ -14,7 +17,7 @@ const {
 router.get('/dishes', getAllDishes);
 
 // 2. If user sends POST / (New Order) -> Ask Chef to createDish
-router.post('/dishes', createDish);
+router.post('/dishes', protect, authorize('admin', 'manager'), createDish);
 
 // 3. If user goes to GET /:id (Ask for specific meal) -> Ask Chef to getDishById
 router.get('/dishes/:id', getDishById);

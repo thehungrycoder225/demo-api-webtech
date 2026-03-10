@@ -5,10 +5,12 @@ const transactionSchema = new mongoose.Schema({
   description: {
     type: String, // Text: "Starbucks"
     required: true,
+    minLength: [3, 'Description must be at least 3 characters long'], // Custom error message if description is too short
   },
   amount: {
     type: Number, // Number: 5.50
     required: true,
+    min: [0.01, 'Amount must be greater than zero'], // Custom error message if amount <= 0
   },
   type: {
     type: String,
